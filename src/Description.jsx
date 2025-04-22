@@ -1,6 +1,18 @@
 import { Plus, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 
 export default function Description() {
+  const [quantity, setQuantity] = useState(0);
+
+  const HandleClick1 = () => {
+    setQuantity(quantity + 1);
+    console.log(quantity);
+  };
+  const HandleClick2 = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <div className="lg:p-2 lg:w-[400px] lg:mt-32 lg:ml-32 p-8 space-y-4 sm:ml-20 ">
       <h1 className="text-gray-500 text-sm">SNEAKER COMPANY</h1>
@@ -24,15 +36,21 @@ export default function Description() {
 
       <div className="lg:flex lg:flex-row  gap-8 sm:flex-col ">
         <div className="border  divide-x rounded-lg bg-gray-100 flex">
-          <button className="w-full h-full px-5 py-2 text-orange-500 font-extrabold border-r-2 border-gray-200 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <button
+            onClick={HandleClick2}
+            className="w-full h-full px-5 py-2 text-orange-500 font-extrabold border-r-2 border-gray-200 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
             -
           </button>
 
           <button className="w-full h-full px-5 py-2 text-center border-r-2 border-gray-200 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            0
+            {quantity}
           </button>
 
-          <button className="w-full h-full px-4 py-2  text-orange-500 font-extrabold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <button
+            onClick={HandleClick1}
+            className="w-full h-full px-4 py-2  text-orange-500 font-extrabold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
             <Plus size={20} className="mr-0" />
           </button>
         </div>
